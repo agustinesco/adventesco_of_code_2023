@@ -1,4 +1,4 @@
-defmodule Day1Part1 do
+defmodule Day1.Part1 do
   @moduledoc """
     This module will work this advent of code challenge https://adventofcode.com/2023/day/1
   """
