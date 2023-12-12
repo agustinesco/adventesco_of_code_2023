@@ -9,7 +9,8 @@ defmodule Day1.Part2 do
     {:ok, contents} = File.read(@input)
 
     contents
-    |> String.replace("\r", "") # Some weird windows character
+    # Some weird windows character
+    |> String.replace("\r", "")
     |> String.split("\n")
     |> Enum.map(fn line -> find_numbers(line) end)
     |> Enum.sum()
@@ -19,13 +20,16 @@ defmodule Day1.Part2 do
     fist_number = find_first_number(line, "", nil)
     last_number = find_first_number(String.reverse(line), "", nil)
 
-    fist_number <> last_number
+    (fist_number <> last_number)
     |> String.to_integer()
   end
 
-  defp find_first_number(line, acc, number) when is_binary(line), do: String.split(line, "") |> find_first_number(acc, number)
+  defp find_first_number(line, acc, number) when is_binary(line),
+    do: String.split(line, "") |> find_first_number(acc, number)
+
   defp find_first_number(_line, _acc, number) when not is_nil(number), do: number
   defp find_first_number([], _acc, _number), do: nil
+
   defp find_first_number([char | rest], acc, _number) do
     candidate = acc <> char
 

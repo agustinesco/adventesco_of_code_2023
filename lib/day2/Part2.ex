@@ -5,7 +5,8 @@ defmodule Day2.Part2 do
     {:ok, contents} = File.read(@input)
 
     contents
-    |> String.replace("\r", "") # Some weird windows character
+    # Some weird windows character
+    |> String.replace("\r", "")
     |> String.split("\n")
     |> Enum.map(fn cubes ->
       [_id, cube_numbers] = String.split(cubes, ": ")
